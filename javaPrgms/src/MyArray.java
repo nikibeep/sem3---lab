@@ -1,7 +1,6 @@
-import java.io.*;
 import java.util.*;
-public class arrayClass{
-    public arrayClass{
+class Arrayclass{
+    public Arrayclass(){
         //default constructor
     }
     public void readArray(int[] arr){
@@ -10,6 +9,8 @@ public class arrayClass{
         Scanner scan = new Scanner(System.in);
         for(int i=0; i<arr.length; i++){
             arr[i] = scan.nextInt();
+            //close scanner object
+            scan.close();
         }
     }
     public int highestNumber(int[] arr){
@@ -79,7 +80,7 @@ public class arrayClass{
 }
 public class MyArray {
     public static void main(String[] args) {
-        arrayClass obj = new arrayClass();
+        Arrayclass obj = new Arrayclass();
         int[] arr = new int[10];
         obj.readArray(arr);
         System.out.println("Highest number is:"+obj.highestNumber(arr));

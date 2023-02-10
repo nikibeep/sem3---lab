@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 class Arrayclass{
     public Arrayclass(){
@@ -5,12 +6,11 @@ class Arrayclass{
     }
     public void readArray(int[] arr){
         //read array
-        System.out.print("Enter the array length:"+arr.length);
-        Scanner scan = new Scanner(System.in);
-        for(int i=0; i<arr.length; i++){
-            arr[i] = scan.nextInt();
-            //close scanner object
-            scan.close();
+        System.out.println("Enter 10 numbers:");
+        try (Scanner scan = new Scanner(System.in)) {
+            for(int i=0; i<arr.length; i++){
+                arr[i] = scan.nextInt();
+            }
         }
     }
     public int highestNumber(int[] arr){
@@ -23,7 +23,7 @@ class Arrayclass{
         }
         return high;
     }
-    public int smallestNumber(int[] arr){
+    public int smallestNumber(int[] arr)throws InputMismatchException{
         //find smallest
         int small = arr[0];
         for(int i=0; i<arr.length; i++){
@@ -79,7 +79,7 @@ class Arrayclass{
     }
 }
 public class MyArray {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Arrayclass obj = new Arrayclass();
         int[] arr = new int[10];
         obj.readArray(arr);
@@ -88,6 +88,5 @@ public class MyArray {
         System.out.println("Repeated number is:"+obj.isRepeat(arr));
         System.out.println("Repeated number count is:"+obj.repeatedElementCount(arr));
         obj.showRepeatedNumbers();
-    }
-    
+    }  
 }

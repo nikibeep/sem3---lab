@@ -85,4 +85,12 @@ public class PharmaceuticalCompany {
     public void introduceCompany() {
         System.out.println("We are a pharmaceutical company based in " + location);
     }
+        // Main method to run the program
+    public static void main(String[] args) {
+        // Create a new pharmaceutical company object
+        PharmaceuticalCompany company = new PharmaceuticalCompany("My Company", "New York", 2000, 1000);
+        
+        // Call the introduceCompany method to print information about the company
+        company.introduceCompany();
+    }
 }

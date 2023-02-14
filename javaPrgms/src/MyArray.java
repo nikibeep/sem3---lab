@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.*;
 class Arrayclass{
     public Arrayclass(){

@@ -25,5 +25,12 @@ public class GenericPharmaceuticalCompany extends PharmaceuticalCompany {
                             + " founded in " + getYearFounded() + " with " + getNumberOfEmployees() + " employees.");
         
     }
+    public static void main(String[] args) {
+        GenericPharmaceuticalCompany company = new GenericPharmaceuticalCompany("Generic Pharmaceuticals", "New York", 2000, 1000);
+        company.introduceCompany();
+        company.hireEmployee("John");
+        company.hireEmployee("John", "Manager");
+        company.hireEmployee("John", "Manager", 100000);
+    }
 }
 

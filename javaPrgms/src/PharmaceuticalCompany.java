@@ -5,15 +5,10 @@ public class PharmaceuticalCompany {
     private String location;
     private int yearFounded;
     private int numberOfEmployees;
-    
+    // Static fields are shared by all objects of the class
+    private static int numberOfCompanies = 0;
+
     // Constructors
-    public PharmaceuticalCompany() {
-        this.name = "Unknown";
-        this.location = "Unknown";
-        this.yearFounded = 0;
-        this.numberOfEmployees = 0;
-    }
-    
     public PharmaceuticalCompany(String name, String location) {
         this.name = name;
         this.location = location;
@@ -70,7 +65,7 @@ public class PharmaceuticalCompany {
     
     // Method overloading: different versions of the same method with different parameters
     public void hireEmployee(String name) {
-        System.out.println("Hired new employee: " + name);
+        System.out.println("Hired new employeer: " + name);
     }
     
     public void hireEmployee(String name, String position) {
@@ -85,12 +80,48 @@ public class PharmaceuticalCompany {
     public void introduceCompany() {
         System.out.println("We are a pharmaceutical company based in " + location);
     }
+    //constructor to count the number of companies
+    public PharmaceuticalCompany() {
+        numberOfCompanies++;
+    }
+
+    public static int getNumberOfCompanies() {
+        return numberOfCompanies;
+    }
+    // Static block
+    static {
+        System.out.println("PharmaceuticalCompany class has been loaded.");
+    }
+    // Static inner class
+    public static class Employee {
+        private String name;
+        private int age;
+    
+        public Employee(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public int getAge() {
+            return age;
+        }
+    }
+
         // Main method to run the program
     public static void main(String[] args) {
         // Create a new pharmaceutical company object
         PharmaceuticalCompany company = new PharmaceuticalCompany("My Company", "New York", 2000, 1000);
-        
+        // Create a new employee object
+        PharmaceuticalCompany.Employee employee = new PharmaceuticalCompany.Employee("John", 30);
+        // Call the getter methods to print information about the employee
+        employee.getName();
+        employee.getAge();
         // Call the introduceCompany method to print information about the company
         company.introduceCompany();
     }
 }
+

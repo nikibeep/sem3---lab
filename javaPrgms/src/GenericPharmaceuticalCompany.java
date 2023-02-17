@@ -27,10 +27,14 @@ public class GenericPharmaceuticalCompany extends PharmaceuticalCompany {
     }
     public static void main(String[] args) {
         GenericPharmaceuticalCompany company = new GenericPharmaceuticalCompany("Generic Pharmaceuticals", "New York", 2000, 1000);
+        PharmaceuticalCompany.Employee employee = new PharmaceuticalCompany.Employee("John", 30);
         company.introduceCompany();
         company.hireEmployee("John");
         company.hireEmployee("John", "Manager");
         company.hireEmployee("John", "Manager", 100000);
-    }
+        System.out.println("Employee name: " + employee.getName()); 
+        System.out.println("Employee age: " + employee.getAge());
+        System.out.println("Number of companies: " + PharmaceuticalCompany.getNumberOfCompanies());  
+     }
 }
 

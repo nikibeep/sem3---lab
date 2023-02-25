@@ -1,4 +1,3 @@
-
 public class GenericPharmaceuticalCompany extends PharmaceuticalCompany {
     
     // Constructor overloading: multiple constructors with different parameters

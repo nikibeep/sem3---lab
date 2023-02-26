@@ -20,8 +20,20 @@ public class GenericPharmaceuticalCompany extends PharmaceuticalCompany {
     // Method overriding: replace the introduceCompany method in the parent class with a new implementation
     @Override
     public void introduceCompany() {
-        System.out.println("We are a generic pharmaceutical company based in " + getLocation() 
+        StringBuilder message = new StringBuilder();
+        message.append("We are a pharmaceutical company based in ");
+        message.append(getLocation());
+        message.append(" founded in ");
+        message.append(getYearFounded());
+        message.append(" with ");
+        message.append(getNumberOfEmployees());
+        message.append(" employees.");
+        System.out.println(message.toString());
+        System.out.println(message.reverse().toString());
+        System.out.println("We are a generic pharmaceutical company based in " + getLocation().toLowerCase() 
                             + " founded in " + getYearFounded() + " with " + getNumberOfEmployees() + " employees.");
+        String introductionMessage = "We are a pharmaceutical company based in " +getLocation().toLowerCase()+ " founded in " + getYearFounded() + " with " + getNumberOfEmployees() + " employees.";
+        System.out.println(introductionMessage);
         
     }
     public static void main(String[] args) {

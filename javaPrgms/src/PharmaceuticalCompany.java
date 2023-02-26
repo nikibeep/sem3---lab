@@ -65,13 +65,16 @@ public class PharmaceuticalCompany {
     
     // Method overloading: different versions of the same method with different parameters
     public void hireEmployee(String name) {
-        System.out.println("Hired new employeer: " + name);
+        if (name.equals("John")) {
+            System.out.println("Hired new employer: " + name);
+        } else {
+            System.out.println("Invalid name: " + name);
+        }
     }
     
     public void hireEmployee(String name, String position) {
         System.out.println("Hired new employee: " + name + " as " + position);
-    }
-    
+    }    
     public void hireEmployee(String name, String position, int salary) {
         System.out.println("Hired new employee: " + name + " as " + position + " with salary " + salary);
     }

@@ -33,7 +33,7 @@ public class ResumeGenerator extends JFrame implements ActionListener {
 
         // add components to the frame
         Container c = getContentPane();
-        c.setLayout(new GridLayout(5, 2));
+        c.setLayout(new GridLayout(6, 2));
         c.add(nameLabel);
         c.add(nameField);
         c.add(emailLabel);
@@ -42,10 +42,15 @@ public class ResumeGenerator extends JFrame implements ActionListener {
         c.add(phoneField);
         c.add(experienceLabel);
         c.add(scrollPane);
+
+        // add image to the frame
+        JLabel imageLabel = new JLabel(new ImageIcon("image.jpg"));
+        c.add(imageLabel);
+
         c.add(new JLabel());
         c.add(generateButton);
 
-        setSize(400, 300);
+        setSize(500, 400);
         setVisible(true);
     }
 
@@ -55,14 +60,17 @@ public class ResumeGenerator extends JFrame implements ActionListener {
         String phone = phoneField.getText();
         String experience = experienceArea.getText();
 
-        // create resume as a string
-        String resume = "Name: " + name + "\n\n" +
-                        "Email: " + email + "\n\n" +
-                        "Phone: " + phone + "\n\n" +
-                        "Experience: " + experience;
+        // create resume as a string with the image
+        ImageIcon imageIcon = new ImageIcon("image.jpg");
+        String resume = "<html><body><div><img src='" + imageIcon + "'></div>" +
+                        "<div><b>Name:</b> " + name + "</div>" +
+                        "<div><b>Email:</b> " + email + "</div>" +
+                        "<div><b>Phone:</b> " + phone + "</div>" +
+                        "<div><b>Experience:</b> " + experience + "</div></body></html>";
 
-        // display resume in a dialog box
-        JOptionPane.showMessageDialog(this, resume, "Resume", JOptionPane.INFORMATION_MESSAGE);
+        // display resume with the image in a dialog box
+        JLabel resumeLabel = new JLabel(resume);
+        JOptionPane.showMessageDialog(this, resumeLabel, "Resume", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void main(String[] args) {

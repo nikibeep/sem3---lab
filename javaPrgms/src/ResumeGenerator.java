@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 
 public class ResumeGenerator extends JFrame implements ActionListener {
 
@@ -8,6 +9,7 @@ public class ResumeGenerator extends JFrame implements ActionListener {
     private JTextField emailField;
     private JTextField phoneField;
     private JTextArea experienceArea;
+    private JLabel imageLabel;
 
     public ResumeGenerator() {
         setTitle("Resume Generator");
@@ -43,8 +45,25 @@ public class ResumeGenerator extends JFrame implements ActionListener {
         c.add(experienceLabel);
         c.add(scrollPane);
 
+        // add image chooser button
+        JButton imageChooserButton = new JButton("Choose Image");
+        imageChooserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                int result = fileChooser.showOpenDialog(ResumeGenerator.this);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    ImageIcon imageIcon = new ImageIcon(selectedFile.getPath());
+                    imageLabel.setIcon(imageIcon);
+                }
+            }
+        });
+        c.add(new JLabel());
+        c.add(imageChooserButton);
+
         // add image to the frame
-        JLabel imageLabel = new JLabel(new ImageIcon("image.jpg"));
+        imageLabel = new JLabel();
         c.add(imageLabel);
 
         c.add(new JLabel());
@@ -59,19 +78,23 @@ public class ResumeGenerator extends JFrame implements ActionListener {
         String email = emailField.getText();
         String phone = phoneField.getText();
         String experience = experienceArea.getText();
-
+    
         // create resume as a string with the image
-        ImageIcon imageIcon = new ImageIcon("image.jpg");
-        String resume = "<html><body><div><img src='" + imageIcon + "'></div>" +
-                        "<div><b>Name:</b> " + name + "</div>" +
-                        "<div><b>Email:</b> " + email + "</div>" +
-                        "<div><b>Phone:</b> " + phone + "</div>" +
-                        "<div><b>Experience:</b> " + experience + "</div></body></html>";
-
+        ImageIcon imageIcon = (ImageIcon) imageLabel.getIcon();
+        String resume = "<html><body><div style='background-color: #D5F5E3; padding: 10px;'>" +
+                "<div><img src='" + imageIcon + "'></div>" +
+                "<div style='margin-top: 20px;'><b style='color: #FF5733; font-size: 20px;'>Name:</b> <span style='font-size: 20px;'>" + name + "</span></div>" +
+                "<div style='margin-top: 10px;'><b style='color: #FF5733; font-size: 20px;'>Email:</b> <span style='font-size: 20px;'>" + email + "</span></div>" +
+                "<div style='margin-top: 10px;'><b style='color: #FF5733; font-size: 20px;'>Phone:</b> <span style='font-size: 20px;'>" + phone + "</span></div>" +
+                "<div style='margin-top: 20px;'><b style='color: #FF5733; font-size: 20px;'>Experience:</b></div>" +
+                "<div style='background-color: #FDEDEC; padding: 10px; margin-top: 10px;'><span style='font-size: 18px;'>" + experience + "</span></div></div></body></html>";
+    
         // display resume with the image in a dialog box
         JLabel resumeLabel = new JLabel(resume);
         JOptionPane.showMessageDialog(this, resumeLabel, "Resume", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    
 
     public static void main(String[] args) {
         ResumeGenerator rg = new ResumeGenerator();

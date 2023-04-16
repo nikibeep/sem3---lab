@@ -1,4 +1,4 @@
-javaPrgms/src/**/*.class
-sem3 - lab\javaPrgms\src\med\*.class
-sem3 - lab\javaPrgms\src\medical\*.class
-sem3 - lab\javaPrgms\src\entities\*.class
+sem3 - lab/javaPrgms/src/**/*.class
+sem3 - lab/javaPrgms/src/med/*.class
+sem3 - lab/javaPrgms/src/medical/*.class
+sem3 - lab/javaPrgms/src/entities/*.class

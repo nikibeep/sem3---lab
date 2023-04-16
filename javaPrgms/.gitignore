@@ -1,1 +1,1 @@
-javaPrgms/src/*.class
+javaPrgms/src/**/*.class
